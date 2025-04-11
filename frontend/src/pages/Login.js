@@ -189,9 +189,9 @@ const Login = () => {
                   }}
                 />
                 
-                <Box sx={{ my: 2, display: 'flex', justifyContent: 'center' }}>
+                {/* <Box sx={{ my: 2, display: 'flex', justifyContent: 'center' }}>
                   <CloudflareTurnstile onVerify={handleTurnstileVerify} />
-                </Box>
+                </Box> */}
                 
                 <Button
                   type="submit"
