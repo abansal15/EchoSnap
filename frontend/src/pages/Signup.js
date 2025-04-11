@@ -25,7 +25,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { useTheme as useCustomTheme } from '../contexts/ThemeContext';
-import axios from 'axios';
+import api from '../utils/axiosConfig';
 import SignupScene from '../components/3D/SignupScene';
 import CloudflareTurnstile from '../components/CloudflareTurnstile';
 import '../styles/animations.css';
@@ -117,7 +117,7 @@ const Signup = () => {
     setError('');
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await api.post('/api/auth/signup', {
         ...formData,
         turnstileToken
       });

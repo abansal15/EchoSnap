@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const CloudflareTurnstile = ({ onVerify }) => {
   const turnstileRef = useRef(null);
+  const siteKey = process.env.REACT_APP_TURNSTILE_SITE_KEY || "0x4AAAAAABD7WDeFVIS9xjsn";
 
   useEffect(() => {
     // Load the Cloudflare Turnstile script
@@ -27,7 +28,7 @@ const CloudflareTurnstile = ({ onVerify }) => {
     <div
       ref={turnstileRef}
       className="cf-turnstile"
-      data-sitekey="0x4AAAAAABD7WDeFVIS9xjsn"
+      data-sitekey={siteKey}
       data-callback="onTurnstileCallback"
       data-theme="light"
       style={{ margin: '20px 0' }}

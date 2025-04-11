@@ -19,7 +19,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LoginIcon from '@mui/icons-material/Login';
 import { useTheme as useCustomTheme } from '../contexts/ThemeContext';
-import axios from 'axios';
+import api from '../utils/axiosConfig';
 import LoginScene from '../components/3D/LoginScene';
 import CloudflareTurnstile from '../components/CloudflareTurnstile';
 import '../styles/animations.css';
@@ -57,7 +57,7 @@ const Login = () => {
     setError('');
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await api.post('/api/auth/login', {
         email,
         password,
         turnstileToken
@@ -189,9 +189,9 @@ const Login = () => {
                   }}
                 />
                 
-                {/* <Box sx={{ my: 2, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ my: 2, display: 'flex', justifyContent: 'center' }}>
                   <CloudflareTurnstile onVerify={handleTurnstileVerify} />
-                </Box> */}
+                </Box>
                 
                 <Button
                   type="submit"
