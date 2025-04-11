@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance with custom configuration
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
@@ -61,6 +61,13 @@ api.interceptors.response.use(
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error('Error message:', error.message);
+    }
+    
+    if (error.response && error.response.status === 401) {
+      // Handle unauthorized access
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
     }
     
     return Promise.reject(error);
